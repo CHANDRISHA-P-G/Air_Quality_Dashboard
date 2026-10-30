@@ -1,0 +1,359 @@
+.map-view-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+}
+
+.map-view-container .leaflet-container {
+  z-index: 1;
+  background: #d9e5e3;
+  font-family: inherit;
+}
+
+.map-view-container.air-layer .leaflet-container {
+  background: #080b10;
+}
+
+.map-view-container.air-layer .leaflet-tile-pane {
+  filter: grayscale(1) invert(1) brightness(0.52) contrast(1.72);
+}
+
+/* --- Search Bar & Dropdown Styling --- */
+.place-search {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1050;
+  width: min(320px, calc(100% - 36px));
+}
+
+.place-search-launch,
+.place-search-input {
+  display: flex;
+  height: 42px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid rgba(234, 246, 250, 0.55);
+  border-radius: 12px;
+  color: #419b8b;
+  background: rgba(247, 252, 253, 0.95);
+  box-shadow: 0 8px 24px rgba(18, 41, 51, 0.2);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.place-search-input input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #233c47;
+  font: inherit;
+  font-size: 12px;
+}
+
+.place-search-results {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 6px;
+  border: 1px solid rgba(234, 246, 250, 0.55);
+  border-radius: 12px;
+  background: rgba(247, 252, 253, 0.97);
+  box-shadow: 0 12px 30px rgba(18, 41, 51, 0.25);
+  z-index: 1060;
+  box-sizing: border-box;
+}
+
+.place-search-result {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #5c7782;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.place-search-result:hover {
+  background: rgba(72, 183, 158, 0.12);
+}
+
+.place-search-result span {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-search-result strong {
+  color: #233c47;
+  font-size: 11px;
+}
+
+.place-search-result small {
+  color: #718d96;
+  font-size: 9px;
+}
+
+/* --- Map Instructions & Data Chip --- */
+.map-instructions,
+.map-data-chip {
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(234, 246, 250, 0.42);
+  color: #19313d;
+  background: rgba(247, 252, 253, 0.84);
+  box-shadow: 0 8px 24px rgba(18, 41, 51, 0.13);
+  backdrop-filter: blur(18px);
+}
+
+.map-instructions {
+  top: 72px;
+  left: 18px;
+  gap: 10px;
+  padding: 8px 12px 8px 8px;
+  border-radius: 12px;
+}
+
+.instruction-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 9px;
+  color: #117d72;
+  background: rgba(61, 190, 164, 0.13);
+}
+
+.map-instructions span {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+}
+
+.map-instructions small {
+  font-size: 9px;
+  color: #5c7782;
+}
+
+.map-data-chip {
+  top: 126px;
+  left: 18px;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.grid-status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #48b985;
+}
+
+.grid-status-indicator.loading {
+  background: #eab308;
+}
+
+.grid-status-indicator.error {
+  background: #ef4444;
+}
+
+/* --- Floating Map Action Overlays --- */
+.map-floating-action-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 18px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.floating-map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  backdrop-filter: blur(16px);
+}
+
+.floating-map-btn.pulsing-glow-btn {
+  border: 1px solid rgba(249, 115, 22, 0.6);
+  color: #ffedd5;
+  background: rgba(249, 115, 22, 0.22);
+}
+
+.floating-map-btn.shelter-map-btn {
+  border: 1px solid rgba(239, 68, 68, 0.6);
+  color: #fee2e2;
+  background: rgba(225, 29, 72, 0.28);
+}
+
+.floating-exposure-card,
+.shelter-modal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid rgba(204, 228, 240, 0.2);
+  border-radius: 10px;
+  background: rgba(10, 22, 33, 0.92);
+  color: #f1f5f9;
+  font-size: 11px;
+  backdrop-filter: blur(20px);
+}
+
+.exposure-card-header,
+.shelter-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.exposure-card-header button,
+.shelter-modal-header button {
+  background: transparent;
+  border: 0;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.shelter-modal-card ul {
+  margin: 0;
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #cbd5e1;
+  font-size: 10px;
+}
+
+/* --- Leaflet Custom Map Markers --- */
+.aqi-map-marker {
+  position: relative;
+  display: flex;
+  width: 120px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.map-marker-label {
+  z-index: 2;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  color: #fff;
+  background: var(--marker-color);
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.map-marker-dot {
+  position: relative;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--marker-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.aqi-map-marker.user .map-marker-dot {
+  width: 14px;
+  height: 14px;
+  background: #38bdf8;
+  border-color: #fff;
+}
+
+/* Target ONLY the dropped pin marker */
+.aqi-map-marker.pin .map-marker-dot {
+  width: 14px;
+  height: 14px;
+  background: #3fb2f4;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  transform: rotate(45deg); /* Turns the pin into a sharp diamond */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Bottom Hazard Legend Bar --- */
+.map-hazard-legend-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 12px;
+  background: rgba(10, 22, 33, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.legend-item span {
+  font-size: 9px;
+  font-weight: 900;
+}
+
+/* --- Dropped Pin Diamond Shape Override --- */
+.aqi-map-marker.pin .map-marker-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  background: var(--marker-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transform: rotate(45deg);
+}

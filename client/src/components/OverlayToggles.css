@@ -1,0 +1,57 @@
+.overlay-toggles-container {
+  position: absolute;
+  top: 83px;
+  right: 18px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.pill-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid rgba(234, 246, 250, 0.42);
+  border-radius: 999px;
+  color: #5d737e;
+  background: rgba(247, 252, 253, 0.84);
+  box-shadow: 0 7px 20px rgba(18, 41, 51, 0.11);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.pill-toggle:hover,
+.pill-toggle.active {
+  border-color: rgba(55, 164, 143, 0.3);
+  color: #1c7467;
+  background: rgba(246, 255, 252, 0.94);
+}
+
+.toggle-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a9b8bd;
+}
+
+.pill-toggle.active .toggle-indicator {
+  background: #49be96;
+  box-shadow: 0 0 8px rgba(73, 190, 150, 0.65);
+}
+
+@media (max-width: 680px) {
+  .overlay-toggles-container {
+    top: 73px;
+    right: 12px;
+    gap: 9px;
+  }
+}
